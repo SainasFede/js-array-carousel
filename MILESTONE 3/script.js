@@ -7,35 +7,53 @@ const imagesArray = [
 ];
 
 let imagesContainer = '';
+let circlesBox = '';
 
 const container = document.querySelector('.container-image');
-
+const circles = document.querySelector('.box-circles');
 
 for(let i = 0; i < imagesArray.length; i++){
   imagesContainer += `
-  <img class="hide item" src="img/${imagesArray[i]}" alt="img/${imagesArray[i]}"> `;
+  <img class="item hide" src="img/${imagesArray[i]}" alt="img/${imagesArray[i]}"> `;
+
+  circlesBox += '<div class= "circle" ></div>'; 
 }
 let counterImages = 0;
 
 const next = document.querySelector('.right');
 const back = document.querySelector('.left');
-/*    back.classList.add('hide');   */
+back.classList.add('hide');
 
 container.innerHTML = imagesContainer;
+circles.innerHTML = circlesBox;
 
 const items = document.getElementsByClassName('item');
+const circlesItem = document.getElementsByClassName('circle');
+
  items[counterImages].classList.remove('hide'); 
  items[counterImages].classList.add('active');
+ circlesItem[counterImages].classList.add('active');
 
 next.addEventListener('click', function(){
+  items[counterImages].classList.add('hide');
   items[counterImages].classList.remove('active');
   counterImages++;
   items[counterImages].classList.add('active');
 
+  back.classList.remove('hide');
+
+  if(counterImages === imagesArray - 1){
+    next.classList.add('hide');
+  }
 });
 
 back.addEventListener('click', function(){
+  items[counterImages].classList.add('active');
   items[counterImages].classList.remove('active');
   counterImages--;
   items[counterImages].classList.add('active');
-})
+
+  if(counterImages === 0){
+    back.classList.add('hide');
+  }
+});
