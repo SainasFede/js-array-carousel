@@ -42,7 +42,7 @@ next.addEventListener('click', function(){
 
   back.classList.remove('hide');
 
-  if(counterImages === imagesArray - 1){
+  if(counterImages === imagesArray.length - 1){
     next.classList.add('hide');
   }
 });
@@ -52,7 +52,8 @@ back.addEventListener('click', function(){
   items[counterImages].classList.remove('active');
   counterImages--;
   items[counterImages].classList.add('active');
-
+  
+  next.classList.remove('hide');
   if(counterImages === 0){
     back.classList.add('hide');
   }
