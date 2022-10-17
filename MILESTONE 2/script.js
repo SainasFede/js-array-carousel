@@ -8,18 +8,17 @@ const imagesArray = [
 
 let imagesContainer = '';
 
-const container = document.querySelector('container-image');
+const container = document.querySelector('.container-image');
 
 
 for(let i = 0; i < imagesArray.length; i++){
   imagesContainer += `
-  <img class="item" src="${imagesArray[i]}" alt="${imagesArray[i]}"> `;
+  <img class="hide item" src="img/${imagesArray[i]}" alt="img/${imagesArray[i]}"> `;
 }
 let counterImages = 0;
-
 
 container.innerHTML = imagesContainer;
 
 const items = document.getElementsByClassName('item');
-
+items[counterImages].classList.remove('hide');
 items[counterImages].classList.add('active');

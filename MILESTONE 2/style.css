@@ -57,6 +57,7 @@
 .btn-arrow:hover{
   color: red;
   opacity: 1;
+  cursor: pointer;
 }
 
 .btn-arrow.left{
